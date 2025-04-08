@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: d3v-mongodb-dev
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+      MONGO_INITDB_DATABASE: d3v
+    volumes:
+      - mongodb_data_dev:/data/db
+    networks:
+      - d3v_network_dev
+
+  redis:
+    image: redis:alpine
+    container_name: d3v-redis-dev
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data_dev:/data
+    networks:
+      - d3v_network_dev
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: d3v-backend-dev
+    ports:
+      - "5000:5000"
+      - "9229:9229" # Node.js debugging port
+    environment:
+      NODE_ENV: development
+      PORT: 5000
+      MONGODB_URI: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb:27017/d3v?authSource=admin
+      REDIS_URI: redis://redis:6379
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRES_IN: 24h
+      TATUM_API_KEY: ${TATUM_API_KEY}
+      WEBHOOK_URL: http://localhost:5000/webhooks
+    volumes:
+      - ./backend:/app
+      - /app/node_modules # Volume to prevent overriding node_modules
+    depends_on:
+      - mongodb
+      - redis
+    networks:
+      - d3v_network_dev
+    command: npm run dev
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: d3v-frontend-dev
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:5000/api
+      - CHOKIDAR_USEPOLLING=true # Needed for hot reload in Docker
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules # Volume to prevent overriding node_modules
+    depends_on:
+      - backend
+    networks:
+      - d3v_network_dev
+    command: npm start
+
+networks:
+  d3v_network_dev:
+    driver: bridge
+
+volumes:
+  mongodb_data_dev:
+  redis_data_dev:
