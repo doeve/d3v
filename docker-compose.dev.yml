@@ -64,7 +64,7 @@ services:
       - CHOKIDAR_USEPOLLING=true # Needed for hot reload in Docker
     volumes:
       - ./frontend:/app
-      - /app/node_modules # Volume to prevent overriding node_modules
+      # - /app/node_modules # Volume to prevent overriding node_modules
     depends_on:
       - backend
     networks:
