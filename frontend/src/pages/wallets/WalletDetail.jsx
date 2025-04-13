@@ -1,6 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { FaArrowLeft, FaSync, FaEdit, FaTrash, FaWallet, FaHistory, FaChartLine, FaExchangeAlt, FaQrcode } from 'react-icons/fa';
+import {
+  FaArrowLeft,
+  FaSync,
+  FaEdit,
+  FaTrash,
+  FaWallet,
+  FaHistory,
+  FaChartLine,
+  FaExchangeAlt,
+  FaQrcode,
+  FaExternalLinkAlt,
+  FaFlask
+} from 'react-icons/fa';
 import { useWallet } from '../../hooks/useWallet';
 import { useAnalytics } from '../../hooks/useAnalytics';
 import Card from '../../components/common/Card';

@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { FaUsers, FaUserPlus, FaChartLine, FaDatabase, FaSync } from 'react-icons/fa';
+import { 
+  FaUsers, 
+  FaUserPlus, 
+  FaChartLine, 
+  FaDatabase, 
+  FaSync,
+  FaWallet,
+  FaExchangeAlt,
+  FaTimes
+} from 'react-icons/fa';
 import adminApi from '../../api/admin';
 import authApi from '../../api/auth';
 import { useAuth } from '../../hooks/useAuth';

@@ -6,7 +6,8 @@ import App from './App';
 import { ToastProvider } from './components/common/Toast';
 
 // Apply Tailwind styles
-import './tailwind.css';
+// import './tailwind.css';
+import './styles/global.css';
 
 const container = document.getElementById('root');
 const root = createRoot(container);

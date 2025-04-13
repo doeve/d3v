@@ -1,6 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { FaArrowLeft, FaEdit, FaStop, FaPlay, FaPause, FaTrash, FaExchangeAlt, FaWallet, FaHistory, FaChartLine } from 'react-icons/fa';
+import {
+  FaArrowLeft,
+  FaEdit,
+  FaStop,
+  FaPlay,
+  FaPause,
+  FaTrash,
+  FaExchangeAlt,
+  FaWallet,
+  FaHistory,
+  FaChartLine,
+  FaCog,
+  FaSync
+} from 'react-icons/fa';
 import { useCopyTrade } from '../../hooks/useCopyTrade';
 import { useAnalytics } from '../../hooks/useAnalytics';
 import CopyTradeSetupModal from '../../components/copyTrade/CopyTradeSetupModal';

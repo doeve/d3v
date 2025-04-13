@@ -5,20 +5,20 @@
 /* Custom Base Styles */
 @layer base {
   html {
-    @apply antialiased;
+    @reference antialiased;
   }
   
   body {
-    @apply bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+    @reference bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-medium leading-tight;
+    @reference font-medium leading-tight;
   }
   
   /* Default focus styles */
   *:focus-visible {
-    @apply outline-none ring-2 ring-blue-500 ring-opacity-50;
+    @reference outline-none ring-2 ring-blue-500 ring-opacity-50;
   }
 }
 
@@ -26,45 +26,45 @@
 @layer components {
   /* Button variants */
   .btn {
-    @apply inline-flex items-center justify-center rounded-md font-medium transition-colors;
+    @reference inline-flex items-center justify-center rounded-md font-medium transition-colors;
   }
   
   .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-700 text-white;
+    @reference bg-blue-600 hover:bg-blue-700 text-white;
   }
   
   .btn-secondary {
-    @apply bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white;
+    @reference bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white;
   }
   
   .btn-danger {
-    @apply bg-red-600 hover:bg-red-700 text-white;
+    @reference bg-red-600 hover:bg-red-700 text-white;
   }
   
   /* Form elements */
   .form-input {
-    @apply w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:border-blue-500 focus:ring-blue-500;
+    @reference w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:border-blue-500 focus:ring-blue-500;
   }
   
   .form-label {
-    @apply block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1;
+    @reference block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1;
   }
   
   /* Card */
   .card {
-    @apply bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden;
+    @reference bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden;
   }
   
   .card-header {
-    @apply p-4 border-b border-gray-200 dark:border-gray-700;
+    @reference p-4 border-b border-gray-200 dark:border-gray-700;
   }
   
   .card-body {
-    @apply p-4;
+    @reference p-4;
   }
   
   .card-footer {
-    @apply p-4 border-t border-gray-200 dark:border-gray-700;
+    @reference p-4 border-t border-gray-200 dark:border-gray-700;
   }
 }
 
